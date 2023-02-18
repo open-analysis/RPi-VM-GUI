@@ -14,9 +14,10 @@ frm_main.pack(fill=BOTH, expand=True)
 # Test build
 n = ["a", "b", "c", "d", "e", "f"]
 im = ["", "", "", "","", ""]
-c = [func.test, func.test, func.test, func.test, func.test, func.test]
+c = [func.printInput, func.test2, func.test3, func.test4, func.test5, func.test6]
+p = ["Input", "Test2", "test3", "test4", "test5", "test6"]
 
-frm_test = build.buildWidgets(n, im, c)
+frm_test = build.buildWidgets(n, im, c, p)
 frm_test.master = frm_main
 frm_test.pack()
 
