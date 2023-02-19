@@ -1,28 +1,59 @@
-import build
+import vars
+import operations as ops
 
-def printInput(input):
-    print("Test")
-    print(f"This is the parameter {input}")
+## Open Screens
+def openAudioOptions():
+    ops.openScreen(vars.audio_out)
 
-def test2(cmd):
-    print("Test2")
-    print(f"{cmd}")
+def openDefaultsScreen():
+    ops.openScreen(vars.defaultAudio)
 
-def test3(cmd):
-    print("Test 3")
-    print(f"{cmd}")
+def setHeadphonesDefault():
+    vars.setDefaultAudio(vars.headphones_opts)
 
-def test4(cmd):
-    print("Test 4")
-    print(f"{cmd}")
+def openDefaultAudio():
+    ops.openScreen(vars.getDefaultAudio())
 
-def test5(cmd):
-    print("Test5")
-    print(f"{cmd}")
+def openAudio():
+    ops.openScreen(vars.getDefaultAudio())
 
-def test6(cmd):
-    print("Test6")
-    print(f"{cmd}")
+def openMics():
+    ops.openScreen(vars.mic_opts)
 
-def moveFolder():
-    pass
+
+## Audio Control
+# Microphone
+def toggleMuteMic():
+    ops.toggleMuteDevice("microphone")
+
+def incBoostMic():
+    ops.incVolDevice("microphone", 5)
+
+def decBoostMic():
+    ops.decVolDevice("microphone", 5)
+
+# Speakers
+def toggleMuteSpeakers():
+    ops.toggleMuteDevice("speakers")
+
+def incVolSpeakers():
+    ops.incVolDevice("speakers", 5)
+
+def decVolSpeakers():
+    ops.decVolDevice("speakers", 5)
+
+# Headphones
+def toggleMuteHeadphones():
+    ops.toggleMuteDevice("Headphones")
+
+def incVolHeadphones():
+    ops.incVolDevice("Headphones", 5)
+
+def decVolHeadphones():
+    ops.decVolDevice("Headphones", 5)
+
+
+## Setting variables
+# Audio out default
+def setSpeakersDefault():
+    vars.setDefaultAudio(vars.speaker_opts)

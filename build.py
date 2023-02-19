@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.ttk import *
 
-def buildWidgets(names, images, cmds, cmd_params):
+def buildWidgets(names, images, cmds):
     SIZE = 75
     MAX_ROW = 2
     MAX_COL = 3
@@ -10,11 +10,20 @@ def buildWidgets(names, images, cmds, cmd_params):
         frm.rowconfigure(row, weight=1, minsize=SIZE)
         for col in range(MAX_COL):
             frm.columnconfigure(col, weight=1, minsize=SIZE)
-            print(f"{col+row*MAX_COL}")
             btn_temp = Button(master=frm, text=names[col+row*MAX_COL], 
                         image=images[col+row*MAX_COL], 
-                        command=lambda: cmds[col+row*MAX_COL](cmd_params[col+row*MAX_COL]))
+                        command=cmds[col+row*MAX_COL])
                         
             btn_temp.grid(row=row, column=col, padx=1, pady=1, sticky="nsew")
 
     return frm
+
+
+def destroyWidgets(frm):
+    frm.destroy()
+
+
+def moveFolder(old_frm, names, images, cmds):
+    destroyWidgets(old_frm)
+
+    return buildWidgets(names, images, cmds)
