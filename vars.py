@@ -23,6 +23,13 @@ def getAudioProg():
     global curr_audio_prog
     return curr_audio_prog
 
+top = [["speakers", "", func.openAudioOptions], 
+       ["microphone", "", func.openMics],
+       ["", "", None],
+       ["", "", None],
+       ["", "", None],
+       ["", "", None]]
+
 audio_out = [["Set output", "", func.openDefaultsScreen],
              ["Audio options", "", func.openAudio],
              ["Audio Mixer", "", func.openAudioProgs],

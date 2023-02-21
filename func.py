@@ -72,8 +72,10 @@ def decVolAudioProgram():
 # Audio out default
 def setSpeakersDefault():
     vars.setDefaultAudio(vars.speaker_opts)
+    ops.openScreen(vars.top)
 def setHeadphonesDefault():
     vars.setDefaultAudio(vars.headphones_opts)
+    ops.openScreen(vars.top)
 
 # Audio program 
 def setProgSpotify():
