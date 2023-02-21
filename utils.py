@@ -4,3 +4,9 @@ def getAttributes(listName):
     cmds = [i[2] for i in listName]
 
     return [names, images, cmds]
+
+def importDevices():
+    pass
+
+def importProgs():
+    pass

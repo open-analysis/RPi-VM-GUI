@@ -8,13 +8,23 @@ def getFrmMain():
     global frm_main
     return frm_main
 
-default_audio_output = None
-def setDefaultAudio(listName):
+# Needs to be set by the incoming data
+default_audio_output = "Headphones"
+def setDefaultAudioOutput(name):
     global default_audio_output
-    default_audio_output = listName
-def getDefaultAudio():
+    default_audio_output = name
+def getDefaultAudioOutput():
     global default_audio_output
     return default_audio_output
+
+default_audio_input = "Microphone"
+def setDefaultAudioInput(listName):
+    global default_audio_input
+    default_audio_input = listName
+def getDefaultAudioInput():
+    global default_audio_input
+    return default_audio_input
+
 curr_audio_prog = ""
 def setAudioProg(name):
     global curr_audio_prog
@@ -23,49 +33,58 @@ def getAudioProg():
     global curr_audio_prog
     return curr_audio_prog
 
-top = [["speakers", "", func.openAudioOptions], 
-       ["microphone", "", func.openMics],
+top = [["speakers", "", func.openAudioOutputOptions], 
+       ["microphone", "", func.openAudioInputOptions],
        ["", "", None],
        ["", "", None],
        ["", "", None],
        ["", "", None]]
 
-audio_out = [["Set output", "", func.openDefaultsScreen],
-             ["Audio options", "", func.openAudio],
+audio_out = [["Set output", "", func.openDefaultOutputScreen],
+             ["Audio options", "", func.openAudioOutput],
              ["Audio Mixer", "", func.openAudioProgs],
              ["", "", None],
              ["", "", None],
              ["", "", None]]
 
-defaultAudio =  [["Headphones", "", func.setHeadphonesDefault],
-                 ["Speakers", "", func.setSpeakersDefault],
-                 ["", "", None],
-                 ["", "", None],
-                 ["", "", None],
-                 ["", "", None]]
+audio_in =  [["Set input", "", func.openDefaultInputScreen],
+             ["Audio options", "", func.openAudioInput],
+             ["", "", None],
+             ["", "", None],
+             ["", "", None],
+             ["", "", None]]
 
-headphones_opts = [["Mute", "", func.toggleMuteHeadphones],
-                   ["Inc Vol", "", func.incVolHeadphones],
-                   ["", "", None],
-                   ["", "", None],
-                   ["Dec Vol", "", func.decVolHeadphones],
-                   ["", "", None]]
-default_audio_output = headphones_opts
+#########################                  These kinds of functions (setting variables) are going to be a problem
+defaultAudioOutput =  [["Headphones", "", func.setHeadphonesDefault],
+                       ["Speakers", "", func.setSpeakersDefault],
+                       ["", "", None],
+                       ["", "", None],
+                       ["", "", None],
+                       ["", "", None]]
 
-speaker_opts = [["Mute", "", func.toggleMuteSpeakers],
-                ["Inc Vol", "", func.incVolSpeakers],
-                ["", "", None],
-                ["", "", None],
-                ["Dec Vol", "", func.decVolSpeakers],
-                ["", "", None]]
+#########################                  These kinds of functions (setting variables) are going to be a problem
+defaultAudioInput =  [["Microphone", "", func.setMicropohoneDefault],
+                       ["", "", None],
+                       ["", "", None],
+                       ["", "", None],
+                       ["", "", None],
+                       ["", "", None]]
 
-mic_opts = [["Mute", "", func.toggleMuteMic],
-            ["Inc Boost", "", func.incBoostMic],
-            ["", "", None],
-            ["", "", None],
-            ["Dec Boost", "", func.decBoostMic],
-            ["", "", None]]
+audio_output_opts = [["Mute", "", func.toggleMuteAudioOut],
+                     ["Inc Vol", "", func.incVolAudioOut],
+                     ["", "", None],
+                     ["", "", None],
+                     ["Dec Vol", "", func.decVolAudioOut],
+                     ["", "", None]]
 
+audio_input_opts = [["Mute", "", func.toggleMuteMic],
+                    ["Inc Boost", "", func.incBoostMic],
+                    ["", "", None],
+                    ["", "", None],
+                    ["Dec Boost", "", func.decBoostMic],
+                    ["", "", None]]
+
+#########################        This is temporary
 audio_progs = [["Spotify", "", func.setProgSpotify],
                ["Discord", "", func.setProgDiscord],
                ["Firefox", "", func.setProgFirefox],

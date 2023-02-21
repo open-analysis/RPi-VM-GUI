@@ -2,55 +2,54 @@ import vars
 import operations as ops
 
 ## Open Screens
-def openAudioOptions():
+def openAudioOutputOptions():
     ops.openScreen(vars.audio_out)
 
-def openDefaultsScreen():
-    ops.openScreen(vars.defaultAudio)
+def openAudioInputOptions():
+    ops.openScreen(vars.audio_in)
 
-def openDefaultAudio():
-    ops.openScreen(vars.getDefaultAudio())
+def openDefaultOutputScreen():
+    ops.openScreen(vars.defaultAudioOutput)
 
-def openAudio():
-    ops.openScreen(vars.getDefaultAudio())
+def openDefaultInputScreen():
+    ops.openScreen(vars.defaultAudioInput)
 
-def openMics():
-    ops.openScreen(vars.mic_opts)
+def openDefaultAudioOutput():
+    ops.openScreen(vars.getDefaultAudioOutput())
+
+def openAudioOutput():
+    ops.openScreen(vars.audio_output_opts)
+
+def openDefaultAudioInput():
+    ops.openScreen(vars.getDefaultAudioInput())
+
+def openAudioInput():
+    ops.openScreen(vars.audio_input_opts)
 
 def openAudioProgs():
     ops.openScreen(vars.audio_progs)
 
 
 ## Audio Device Control
-# Microphone
+# Audio input
 def toggleMuteMic():
-    ops.toggleMuteDevice("microphone")
+    ops.toggleMuteAudioInDevice()
 
 def incBoostMic():
-    ops.incVolDevice("microphone", 5)
+    ops.incVolAudioInDevice(5)
 
 def decBoostMic():
-    ops.decVolDevice("microphone", 5)
+    ops.decVolAudioInDevice(5)
 
-# Speakers
-def toggleMuteSpeakers():
-    ops.toggleMuteDevice("speakers")
+# Audio output
+def toggleMuteAudioOut():
+    ops.toggleMuteAudioOutDevice()
 
-def incVolSpeakers():
-    ops.incVolDevice("speakers", 5)
+def incVolAudioOut():
+    ops.incVolAudioOutDevice(5)
 
-def decVolSpeakers():
-    ops.decVolDevice("speakers", 5)
-
-# Headphones
-def toggleMuteHeadphones():
-    ops.toggleMuteDevice("Headphones")
-
-def incVolHeadphones():
-    ops.incVolDevice("Headphones", 5)
-
-def decVolHeadphones():
-    ops.decVolDevice("Headphones", 5)
+def decVolAudioOut():
+    ops.decVolAudioOutDevice(5)
 
 ## Audio Program Control
 def toggleMuteAudioProgram():
@@ -69,13 +68,18 @@ def decVolAudioProgram():
     ops.decVolProgram(5) 
 
 ## Setting variables
+# Audio input default
+def setMicropohoneDefault():
+    vars.setDefaultAudioInput("speakers")
+    ops.openScreen(vars.audio_input_opts)
+
 # Audio out default
 def setSpeakersDefault():
-    vars.setDefaultAudio(vars.speaker_opts)
-    ops.openScreen(vars.top)
+    vars.setDefaultAudioOutput("speakers")
+    ops.openScreen(vars.audio_output_opts)
 def setHeadphonesDefault():
-    vars.setDefaultAudio(vars.headphones_opts)
-    ops.openScreen(vars.top)
+    vars.setDefaultAudioOutput("headphones")
+    ops.openScreen(vars.audio_output_opts)
 
 # Audio program 
 def setProgSpotify():

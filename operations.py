@@ -9,14 +9,25 @@ def openScreen(list):
     frm_main.pack()
     vars.setFrmMain(frm_main)
 
-def toggleMuteDevice(devName):
-    print(f"Toggling mute device {devName}")
+def toggleMuteAudioOutDevice():
+    print(f"Toggling mute device {vars.default_audio_output}")
 
-def incVolDevice(devName, inc):
-    print(f"Increasing volume on device {devName} by {inc}")
+def incVolAudioOutDevice(inc):
+    print(f"Increasing volume on device {vars.default_audio_output} by {inc}")
 
-def decVolDevice(devName, dec):
-    print(f"Decreasing volume on device {devName} by {dec}")
+def decVolAudioOutDevice(dec):
+    print(f"Decreasing volume on device {vars.default_audio_output} by {dec}")
+
+
+def toggleMuteAudioInDevice():
+    print(f"Toggling mute device {vars.default_audio_input}")
+
+def incVolAudioInDevice(inc):
+    print(f"Increasing volume on device {vars.default_audio_input} by {inc}")
+
+def decVolAudioInDevice(dec):
+    print(f"Decreasing volume on device {vars.default_audio_input} by {dec}")
+
 
 def toggleMuteProgram():
     prog = vars.getAudioProg()
