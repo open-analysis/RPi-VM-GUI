@@ -9,19 +9,19 @@ def openAudioInputOptions():
     ops.openScreen(vars.audio_in)
 
 def openDefaultOutputScreen():
-    ops.openScreen(vars.defaultAudioOutput)
+    ops.openScreen(vars.defaultAudioOutputDevices)
 
 def openDefaultInputScreen():
-    ops.openScreen(vars.defaultAudioInput)
+    ops.openScreen(vars.defaultAudioInputDevices)
 
-def openDefaultAudioOutput():
-    ops.openScreen(vars.getDefaultAudioOutput())
+def openDefaultAudioOutputDevices():
+    ops.openScreen(vars.getDefaultAudioOutputDevice())
 
 def openAudioOutput():
     ops.openScreen(vars.audio_output_opts)
 
-def openDefaultAudioInput():
-    ops.openScreen(vars.getDefaultAudioInput())
+def openDefaultAudioInputDevices():
+    ops.openScreen(vars.getDefaultAudioInputDevice())
 
 def openAudioInput():
     ops.openScreen(vars.audio_input_opts)
@@ -30,6 +30,23 @@ def openAudioProgs():
     ops.openScreen(vars.audio_progs)
 
 
+## Setting variables
+# Setting device
+def setDefaultDevice(name, type):
+    print("\t\thello")
+    if type == "out":
+        vars.setDefaultAudioOutputDevice(name)
+        ops.openScreen(vars.audio_output_opts)
+    elif type == "in":
+        vars.setDefaultAudioInputDevice(name)
+        ops.openScreen(vars.audio_input_opts)
+
+# Audio program 
+def setCurrProg(name):
+    print(name)
+    vars.setAudioProg(name)
+    ops.openScreen(vars.audio_prog_opts)
+    
 ## Audio Device Control
 # Audio input
 def toggleMuteMic():
@@ -66,28 +83,3 @@ def incVolAudioProgram():
 
 def decVolAudioProgram():
     ops.decVolProgram(5) 
-
-## Setting variables
-# Audio input default
-def setMicropohoneDefault():
-    vars.setDefaultAudioInput("speakers")
-    ops.openScreen(vars.audio_input_opts)
-
-# Audio out default
-def setSpeakersDefault():
-    vars.setDefaultAudioOutput("speakers")
-    ops.openScreen(vars.audio_output_opts)
-def setHeadphonesDefault():
-    vars.setDefaultAudioOutput("headphones")
-    ops.openScreen(vars.audio_output_opts)
-
-# Audio program 
-def setProgSpotify():
-    vars.setAudioProg("Spotify")
-    ops.openScreen(vars.audio_prog_opts)
-def setProgDiscord():
-    vars.setAudioProg("Discord")
-    ops.openScreen(vars.audio_prog_opts)
-def setProgFirefox():
-    vars.setAudioProg("Firefox")
-    ops.openScreen(vars.audio_prog_opts)

@@ -10,9 +10,20 @@ def buildWidgets(names, images, cmds):
         frm.rowconfigure(row, weight=1, minsize=SIZE)
         for col in range(MAX_COL):
             frm.columnconfigure(col, weight=1, minsize=SIZE)
-            btn_temp = Button(master=frm, text=names[col+row*MAX_COL], 
-                        image=images[col+row*MAX_COL], 
-                        command=cmds[col+row*MAX_COL])
+            # Check if the list is long enough
+            if (col+row*MAX_COL) < len(names):
+                currName = names[col+row*MAX_COL]
+                currImage = images[col+row*MAX_COL]
+                currCmd = cmds[col+row*MAX_COL]
+            # Otherwise make the button blank
+            else:
+                currName = ""
+                currImage = ""
+                currCmd = None
+
+            btn_temp = Button(master=frm, text=currName, 
+                        image=currImage, 
+                        command=currCmd)
                         
             btn_temp.grid(row=row, column=col, padx=1, pady=1, sticky="nsew")
 

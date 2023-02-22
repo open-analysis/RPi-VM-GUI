@@ -8,20 +8,21 @@ def getFrmMain():
     global frm_main
     return frm_main
 
-# Needs to be set by the incoming data
-default_audio_output = "Headphones"
-def setDefaultAudioOutput(name):
+default_audio_output = ""
+def setDefaultAudioOutputDevice(name):
+    print(f"Setting default audio output to {name}")
     global default_audio_output
     default_audio_output = name
-def getDefaultAudioOutput():
+def getDefaultAudioOutputDevice():
     global default_audio_output
     return default_audio_output
 
-default_audio_input = "Microphone"
-def setDefaultAudioInput(listName):
+default_audio_input = ""
+def setDefaultAudioInputDevice(name):
+    print(f"Setting default audio input to {name}")
     global default_audio_input
-    default_audio_input = listName
-def getDefaultAudioInput():
+    default_audio_input = name
+def getDefaultAudioInputDevice():
     global default_audio_input
     return default_audio_input
 
@@ -33,12 +34,18 @@ def getAudioProg():
     global curr_audio_prog
     return curr_audio_prog
 
-top = [["speakers", "", func.openAudioOutputOptions], 
-       ["microphone", "", func.openAudioInputOptions],
+top = [["Audio Out", "", func.openAudioOutputOptions], 
+       ["Audio In", "", func.openAudioInputOptions],
        ["", "", None],
        ["", "", None],
        ["", "", None],
        ["", "", None]]
+
+defaultAudioOutputDevices =  []
+
+defaultAudioInputDevices =  []
+
+audio_progs = []
 
 audio_out = [["Set output", "", func.openDefaultOutputScreen],
              ["Audio options", "", func.openAudioOutput],
@@ -54,22 +61,6 @@ audio_in =  [["Set input", "", func.openDefaultInputScreen],
              ["", "", None],
              ["", "", None]]
 
-#########################                  These kinds of functions (setting variables) are going to be a problem
-defaultAudioOutput =  [["Headphones", "", func.setHeadphonesDefault],
-                       ["Speakers", "", func.setSpeakersDefault],
-                       ["", "", None],
-                       ["", "", None],
-                       ["", "", None],
-                       ["", "", None]]
-
-#########################                  These kinds of functions (setting variables) are going to be a problem
-defaultAudioInput =  [["Microphone", "", func.setMicropohoneDefault],
-                       ["", "", None],
-                       ["", "", None],
-                       ["", "", None],
-                       ["", "", None],
-                       ["", "", None]]
-
 audio_output_opts = [["Mute", "", func.toggleMuteAudioOut],
                      ["Inc Vol", "", func.incVolAudioOut],
                      ["", "", None],
@@ -83,14 +74,6 @@ audio_input_opts = [["Mute", "", func.toggleMuteMic],
                     ["", "", None],
                     ["Dec Boost", "", func.decBoostMic],
                     ["", "", None]]
-
-#########################        This is temporary
-audio_progs = [["Spotify", "", func.setProgSpotify],
-               ["Discord", "", func.setProgDiscord],
-               ["Firefox", "", func.setProgFirefox],
-               ["", "", None],
-               ["", "", None],
-               ["", "", None]]
 
 audio_prog_opts = [["Toggle Mute", "", func.toggleMuteAudioProgram],
                    ["Mute", "", func.setMuteAudioProgram],

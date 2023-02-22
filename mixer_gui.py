@@ -5,6 +5,8 @@ import vars
 import func
 import operations as ops
 
+import test
+
 window = Tk()
 
 # General frame splitting & assigning to larger frames
@@ -17,6 +19,7 @@ vars.setFrmMain(frm_main)
 btn_return = Button(master=frm_win, text="Return", command=lambda: ops.openScreen(vars.top)) 
 btn_return.pack()
 
-ops.openScreen(vars.top)
+test.start()
 
+ops.openScreen(vars.top)
 window.mainloop()
