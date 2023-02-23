@@ -33,7 +33,6 @@ def openAudioProgs():
 ## Setting variables
 # Setting device
 def setDefaultDevice(name, type):
-    print("\t\thello")
     if type == "out":
         vars.setDefaultAudioOutputDevice(name)
         ops.openScreen(vars.audio_output_opts)
@@ -43,7 +42,6 @@ def setDefaultDevice(name, type):
 
 # Audio program 
 def setCurrProg(name):
-    print(name)
     vars.setAudioProg(name)
     ops.openScreen(vars.audio_prog_opts)
     

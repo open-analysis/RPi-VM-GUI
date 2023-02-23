@@ -10,7 +10,6 @@ def getFrmMain():
 
 default_audio_output = ""
 def setDefaultAudioOutputDevice(name):
-    print(f"Setting default audio output to {name}")
     global default_audio_output
     default_audio_output = name
 def getDefaultAudioOutputDevice():
@@ -19,7 +18,6 @@ def getDefaultAudioOutputDevice():
 
 default_audio_input = ""
 def setDefaultAudioInputDevice(name):
-    print(f"Setting default audio input to {name}")
     global default_audio_input
     default_audio_input = name
 def getDefaultAudioInputDevice():
