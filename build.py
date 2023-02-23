@@ -13,18 +13,36 @@ def buildWidgets(names, images, cmds, start=0):
     frm = Frame(relief=RAISED)
     # Building the buttons
 
+    if start < 0:
+        start = 0
     namesLen = len(names)
 
     for i in range(MAX_WIDGETS):
         # If there's less widgets than the max, break
-        if i == (namesLen-start):
+        if i == (namesLen-start+1):
             break
 
         # Check if the current section of the list will overflow
-        if (namesLen-start) > MAX_WIDGETS and i == (MAX_WIDGETS-1):
-            # make the last button (this current one) be a link to the next page
-            currPage.append(["More", "", lambda: ops.openScreenExt(names, images, cmds, (start+MAX_WIDGETS-1))])
-            break
+        if namesLen > MAX_WIDGETS:
+            # Check if it's on the last button to be created
+            if start > 0:
+                if i == 0:
+                    # make the last button (this current one) be a link to the next page
+                    currPage.append(["Prev", "", lambda: ops.openScreenExt(names, images, cmds, (start-MAX_WIDGETS+2))])
+                    continue
+                elif i == MAX_WIDGETS-1 and ((i+start) != namesLen):
+                    # make the last button (this current one) be a link to the next page
+                    currPage.append(["Next", "", lambda: ops.openScreenExt(names, images, cmds, (start+MAX_WIDGETS-2))])
+                else:
+                    currPage.append([names[start+i-1], images[start+i-1], cmds[start+i-1]])
+                    continue
+            else:
+                if i == (MAX_WIDGETS-1):
+                    # make the last button (this current one) be a link to the next page
+                    currPage.append(["Next", "", lambda: ops.openScreenExt(names, images, cmds, (start+MAX_WIDGETS-1))])
+                    break
+        
+
         currPage.append([names[start+i], images[start+i], cmds[start+i]])
 
     # Add blank buttons if there's less than 6
