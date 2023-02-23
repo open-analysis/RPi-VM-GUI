@@ -9,6 +9,13 @@ def openScreen(list):
     frm_main.pack()
     vars.setFrmMain(frm_main)
 
+def openScreenExt(names, images, cmds, start):
+    frm_main = vars.getFrmMain()
+    build.destroyWidgets(frm_main)
+    frm_main = build.buildWidgets(names, images, cmds, start)
+    frm_main.pack()
+    vars.setFrmMain(frm_main)
+
 def toggleMuteAudioOutDevice():
     print(f"Toggling mute device {vars.default_audio_output}")
 
