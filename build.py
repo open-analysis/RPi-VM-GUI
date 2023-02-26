@@ -4,7 +4,8 @@ from tkinter.ttk import *
 import operations as ops
 
 def buildWidgets(names, images, cmds, start=0):
-    SIZE = 75
+    WIDTH = 235
+    HEIGHT = 170
     MAX_ROW = 2
     MAX_COL = 3
     MAX_WIDGETS = 6
@@ -53,9 +54,10 @@ def buildWidgets(names, images, cmds, start=0):
 
     # Implementing the buttons
     for row in range(MAX_ROW):
-        frm.rowconfigure(row, weight=1, minsize=SIZE)
+        frm.rowconfigure(row, weight=1, minsize=HEIGHT)
+        frm.rowconfigure(row, weight=1)
         for col in range(MAX_COL):
-            frm.columnconfigure(col, weight=1, minsize=SIZE)
+            frm.columnconfigure(col, weight=1, minsize=WIDTH)
 
             btn_temp = Button(master=frm, text=currPage[col+row*MAX_COL][0], 
                         image=currPage[col+row*MAX_COL][1], 
