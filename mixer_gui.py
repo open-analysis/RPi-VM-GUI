@@ -1,7 +1,6 @@
 import tkinter as tk 
 
 import vars
-import func
 import operations as ops
 
 import test

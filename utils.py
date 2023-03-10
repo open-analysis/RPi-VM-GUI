@@ -26,6 +26,17 @@ def importDevices(newDevs):
         elif dev[0] == "out":
             vars.defaultAudioOutputDevices.append(device_setter(dev))
 
+def removeDevice(device):
+    currList = None
+    if device[0] == "in":
+        currList = vars.defaultAudioInputDevices
+    elif device[0] == "out":
+        currList = vars.defaultAudioOutputDevices
+    
+    for dev in currList:
+        if dev[1] == device[1]:
+            currList.remove(dev)
+            break
 
 def program_setter(prog):
     return [prog[0], prog[1], lambda: func.setCurrProg(prog[0])]
@@ -34,3 +45,9 @@ def program_setter(prog):
 def importProgs(newProgs):
     for prog in newProgs:
         vars.audio_progs.append(program_setter(prog))
+
+def removeProgs(program):
+    for prog in vars.audio_progs:
+        if prog[0] == program:
+            vars.audio_progs.remove(prog)
+            break
