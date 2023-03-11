@@ -5,9 +5,6 @@ app = Flask(__name__)
 
 queue = []
 
-def updateQueue(action):
-    queue.append(action)
-
 # Return the queue of commands to the PC
 @app.get("/queue")
 def getQueue():
@@ -59,3 +56,7 @@ def remove_device():
         tmp_devs = request.get_json()
         print(f"Deleting {tmp_devs}")
         # utils.removeDevice(tmp_devs)
+
+def updateQueue(action: str):
+    queue.append(action)
+
