@@ -46,7 +46,7 @@ def add_device():
         print(f"Adding {tmp_devs}")
         # utils.importDevices(tmp_devs)
 
-@app.put("devices")
+@app.put("/devices")
 def update_device():
     if request.is_json:
         tmp_devs = request.get_json()
