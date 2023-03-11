@@ -30,6 +30,7 @@ def update_program():
         tmp_progs = request.get_json()
         print(f"Updating {tmp_progs}")
         # utils.importProgs(tmp_progs)
+    return {"error": "Must be JSON"}, 415
 
 @app.delete("/programs")
 def del_program():
@@ -37,6 +38,7 @@ def del_program():
         tmp_progs = request.get_json()
         print(f"Deleting {tmp_progs}")
         # utils.removeProgs(tmp_progs)
+    return {"error": "Must be JSON"}, 415
 
 # Add/Update/Delete devices
 @app.post("/devices")
@@ -45,6 +47,7 @@ def add_device():
         tmp_devs = request.get_json()
         print(f"Adding {tmp_devs}")
         # utils.importDevices(tmp_devs)
+    return {"error": "Must be JSON"}, 415
 
 @app.put("/devices")
 def update_device():
@@ -52,6 +55,7 @@ def update_device():
         tmp_devs = request.get_json()
         print(f"Updating {tmp_devs}")
         # utils.importDevices(tmp_devs)
+    return {"error": "Must be JSON"}, 415
 
 @app.delete("/devices")
 def remove_device():
@@ -59,3 +63,4 @@ def remove_device():
         tmp_devs = request.get_json()
         print(f"Deleting {tmp_devs}")
         # utils.removeDevice(tmp_devs)
+    return {"error": "Must be JSON"}, 415
