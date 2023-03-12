@@ -31,13 +31,14 @@ def openAudioProgs():
 
 ## Setting variables
 # Setting device
-def setDefaultDevice(name, type):
-    if type == "out":
+def setDefaultDevice(name, devType):
+    if devType == "out":
         setDefaultAudioOutputDevice(name)
         ops.openScreen(audio_output_opts)
-    elif type == "in":
+    elif devType == "in":
         setDefaultAudioInputDevice(name)
         ops.openScreen(audio_input_opts)
+    ops.setDefaultAudioDevice(name, devType)
 
 # Audio program 
 def setCurrProg(name):

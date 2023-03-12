@@ -22,7 +22,8 @@ Git clone this repo to a directory of your choosing but make note of it
 
 # Set GUI & Server to start automatically
 
-## Autostart
+## Autostart 
+` chmod 777 start.sh ` 
 Edit ` /etc/xdg/lxsession/LXDE-pi/autostart `
 Add line at the end:
 `@./path/to/repo/RPi-VM-GUI/start.sh`

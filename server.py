@@ -9,8 +9,7 @@ def getQueue():
     queue = []
     with open("queue.txt", "r") as f:
         lines = f.readlines()
-        for line in lines:
-            queue.append({'action': line.strip()})
+        queue = [line.strip() for line in lines]
     # Clear the file
     open("queue.txt", 'w').close()
     json_queue = jsonify(queue)

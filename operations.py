@@ -17,6 +17,9 @@ def openScreenExt(names, images, cmds, start):
     frm_main.pack()
     button_ops.setFrmMain(frm_main)
 
+def setDefaultAudioDevice(name, devType):
+    server.updateQueue(f"device setDefault {name} {devType}")
+
 def toggleMuteAudioOutDevice():
     #print(f"Toggling mute device {button_ops.default_audio_output}")
     server.updateQueue(f"device mute toggle {button_ops.default_audio_output}")
