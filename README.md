@@ -23,7 +23,9 @@ Git clone this repo to a directory of your choosing but make note of it
 # Set GUI & Server to start automatically
 
 ## Autostart
-Currently unknown, would appreciate help here
+Edit ` /etc/xdg/lxsession/LXDE-pi/autostart `
+Add line at the end:
+`@./path/to/repo/RPi-VM-GUI/start.sh`
 
 # Run
-Because the autostart doesn't work, just run `start.sh` in the directory of `RPi-VM-GUI`
+If auostart doesn't work, just run `start.sh` in the directory of `RPi-VM-GUI`
