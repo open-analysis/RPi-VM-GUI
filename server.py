@@ -3,14 +3,17 @@ import utils
 
 app = Flask(__name__)
 
-queue = []
-
 # Return the queue of commands to the PC
 @app.get("/queue")
 def getQueue():
-    global queue 
+    queue = []
+    with open("queue.txt", "r") as f:
+        lines = f.readlines()
+        for line in lines:
+            queue.append({'action': line.strip()})
+    # Clear the file
+    open("queue.txt", 'w').close()
     json_queue = jsonify(queue)
-    queue.clear()
     return json_queue
 
 # Add/Update/Delete programs
@@ -63,4 +66,6 @@ def remove_device():
     return {"error": "Must be JSON"}, 415
 
 def updateQueue(action: str):
-    queue.append(action)
+    with open("queue.txt", "a") as f:
+        f.writelines(action)
+        f.write('\n')
