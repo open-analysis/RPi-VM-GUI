@@ -19,11 +19,11 @@ def device_setter(dev):
 
 # newDev structure = [device type, device name, device image path, default audio status]
 def importDevices(newDevs):
-    for dev in newDevs:
-        if dev[0] == "in":
-            button_ops.defaultAudioInputDevices.append(device_setter(dev))
-        elif dev[0] == "out":
-            button_ops.defaultAudioOutputDevices.append(device_setter(dev))
+    print(newDevs)
+    if newDevs[0] == "in":
+        button_ops.defaultAudioInputDevices.append(device_setter(newDevs))
+    elif newDevs[0] == "out":
+        button_ops.defaultAudioOutputDevices.append(device_setter(newDevs))
 
 def removeDevice(device):
     currList = None
@@ -42,8 +42,7 @@ def program_setter(prog):
 
 # newProgs structure = [program name, program image path]
 def importProgs(newProgs):
-    for prog in newProgs:
-        button_ops.audio_progs.append(program_setter(prog))
+    button_ops.audio_progs.append(program_setter(newProgs))
 
 def removeProgs(program):
     for prog in button_ops.audio_progs:

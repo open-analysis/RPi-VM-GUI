@@ -1,7 +1,14 @@
+import threading
 from flask import Flask, request, jsonify
+import mixer_gui
+import button_operations as button_ops
 import utils
 
 app = Flask(__name__)
+
+t1 = threading.Thread(target=mixer_gui.start)
+
+t1.start()
 
 # Return the queue of commands to the PC
 @app.get("/queue")
@@ -22,14 +29,9 @@ def add_program():
         tmp_progs = request.get_json()
         print(f"Adding {tmp_progs}")
         utils.importProgs(tmp_progs)
-
-@app.put("/programs")
-def update_program():
-    if request.is_json:
-        tmp_progs = request.get_json()
-        print(f"Updating {tmp_progs}")
-        utils.importProgs(tmp_progs)
+        return "Success", 200
     return {"error": "Must be JSON"}, 415
+
 
 @app.delete("/programs")
 def del_program():
@@ -37,24 +39,16 @@ def del_program():
         tmp_progs = request.get_json()
         print(f"Deleting {tmp_progs}")
         utils.removeProgs(tmp_progs)
+        return "Success", 200
     return {"error": "Must be JSON"}, 415
 
 # Add/Update/Delete devices
 @app.post("/devices")
 def add_device():
-    if request.is_json:
-        tmp_devs = request.get_json()
-        print(f"Adding {tmp_devs}")
-        utils.importDevices(tmp_devs)
-    return {"error": "Must be JSON"}, 415
-
-@app.put("/devices")
-def update_device():
-    if request.is_json:
-        tmp_devs = request.get_json()
-        print(f"Updating {tmp_devs}")
-        utils.importDevices(tmp_devs)
-    return {"error": "Must be JSON"}, 415
+    tmp_devs = request.get_json()
+    print(f"Adding {tmp_devs}")
+    utils.importDevices(tmp_devs)
+    return "Success", 200
 
 @app.delete("/devices")
 def remove_device():
@@ -62,6 +56,7 @@ def remove_device():
         tmp_devs = request.get_json()
         print(f"Deleting {tmp_devs}")
         utils.removeDevice(tmp_devs)
+        return "Success", 200
     return {"error": "Must be JSON"}, 415
 
 def updateQueue(action: str):

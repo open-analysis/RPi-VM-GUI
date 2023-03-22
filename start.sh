@@ -5,4 +5,4 @@ export FLASK_APP=server.py
 cd $MIXER_PATH
 # Set the IP to whatever the static IP you set
 flask run --host=192.168.1.142 --port=5000 &
-python3 mixer_gui.py
+#python3 mixer_gui.py

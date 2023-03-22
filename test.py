@@ -89,6 +89,9 @@ programs2=[
 
 def start():
     print("Importing...")
-    utils.importDevices(devices)
-    utils.importProgs(programs1)
-    utils.importProgs(programs2)
+    for dev in devices:
+        utils.importDevices(dev)
+    for prog in programs1:
+        utils.importProgs(prog)
+    for prog in programs2:
+        utils.importProgs(prog)
