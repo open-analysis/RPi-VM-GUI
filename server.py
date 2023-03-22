@@ -29,8 +29,6 @@ def add_program():
         print(f"Adding {tmp_progs}")
         utils.importProgs(tmp_progs)
         return "Success", 200
-    return {"error": "Must be JSON"}, 415
-
 
 @app.delete("/programs")
 def del_program():
