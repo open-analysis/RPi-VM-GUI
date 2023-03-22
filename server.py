@@ -1,7 +1,6 @@
 import threading
 from flask import Flask, request, jsonify
 import mixer_gui
-import button_operations as button_ops
 import utils
 
 app = Flask(__name__)

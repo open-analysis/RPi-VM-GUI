@@ -22,6 +22,5 @@ def start():
 
     test.start()
 
-    button_ops.printAudio()
     ops.openScreen(button_ops.top)
     window.mainloop()
