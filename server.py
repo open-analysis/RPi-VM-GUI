@@ -1,4 +1,5 @@
 import threading
+import json
 from flask import Flask, request, jsonify
 import mixer_gui
 import utils
@@ -24,37 +25,32 @@ def getQueue():
 # Add/Update/Delete programs
 @app.post("/programs")
 def add_program():
-    if request.is_json:
-        tmp_progs = request.get_json()
-        print(f"Adding {tmp_progs}")
-        utils.importProgs(tmp_progs)
-        return "Success", 200
+    tmp_progs = json.loads(str(request.get_data(True))[2:-1])
+    print(f"Adding {tmp_progs}")
+    utils.importProgs(tmp_progs)
+    return ["Success"], 200
 
 @app.delete("/programs")
 def del_program():
-    if request.is_json:
-        tmp_progs = request.get_json()
-        print(f"Deleting {tmp_progs}")
-        utils.removeProgs(tmp_progs)
-        return "Success", 200
-    return {"error": "Must be JSON"}, 415
+    tmp_progs = json.loads(str(request.get_data(True))[2:-1])
+    print(f"Deleting {tmp_progs}")
+    utils.removeProgs(tmp_progs)
+    return ["Success"], 200
 
 # Add/Update/Delete devices
 @app.post("/devices")
 def add_device():
-    tmp_devs = request.get_json()
+    tmp_devs = json.loads(str(request.get_data(True))[2:-1])
     print(f"Adding {tmp_devs}")
     utils.importDevices(tmp_devs)
-    return "Success", 200
+    return ["Success"], 200
 
 @app.delete("/devices")
 def remove_device():
-    if request.is_json:
-        tmp_devs = request.get_json()
-        print(f"Deleting {tmp_devs}")
-        utils.removeDevice(tmp_devs)
-        return "Success", 200
-    return {"error": "Must be JSON"}, 415
+    tmp_devs = json.loads(str(request.get_data(True))[2:-1])
+    print(f"Deleting {tmp_devs}")
+    utils.removeDevice(tmp_devs)
+    return ["Success"], 200
 
 def updateQueue(action: str):
     with open("queue.txt", "a") as f:

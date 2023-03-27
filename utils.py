@@ -8,37 +8,36 @@ def getAttributes(listName):
     return [names, images, cmds]
 
 def device_setter(dev):
-    if dev[0] == "in":
-        if dev[3] == True:
-            button_ops.setDefaultAudioInputDevice(dev[1])
-        return [dev[1], dev[2], lambda: button_ops.setDefaultDevice(dev[1], "in")]
+    if dev['type'] == "in":
+        if dev['default'] == True:
+            button_ops.setDefaultAudioInputDevice(dev['name'])
+        return [dev['name'], dev['img'], lambda: button_ops.setDefaultDevice(dev['name'], "in")]
     else:
-        if dev[3] == True:
-            button_ops.setDefaultAudioOutputDevice(dev[1])
-        return [dev[1], dev[2], lambda: button_ops.setDefaultDevice(dev[1], "out")]
+        if dev['default'] == True:
+            button_ops.setDefaultAudioOutputDevice(dev['name'])
+        return [dev['name'], dev['img'], lambda: button_ops.setDefaultDevice(dev['name'], "out")]
 
 # newDev structure = [device type, device name, device image path, default audio status]
 def importDevices(newDevs):
-    print(newDevs)
-    if newDevs[0] == "in":
+    if newDevs['type'] == "in":
         button_ops.defaultAudioInputDevices.append(device_setter(newDevs))
-    elif newDevs[0] == "out":
+    elif newDevs['type'] == "out":
         button_ops.defaultAudioOutputDevices.append(device_setter(newDevs))
 
 def removeDevice(device):
     currList = None
-    if device[0] == "in":
+    if device['type'] == "in":
         currList = button_ops.defaultAudioInputDevices
-    elif device[0] == "out":
+    elif device['type'] == "out":
         currList = button_ops.defaultAudioOutputDevices
     
     for dev in currList:
-        if dev[1] == device[1]:
+        if dev[1] == device['name']:
             currList.remove(dev)
             break
 
 def program_setter(prog):
-    return [prog[0], prog[1], lambda: button_ops.setCurrProg(prog[0])]
+    return [prog['name'], prog['img'], lambda: button_ops.setCurrProg(prog['name'])]
 
 # newProgs structure = [program name, program image path]
 def importProgs(newProgs):
@@ -46,6 +45,6 @@ def importProgs(newProgs):
 
 def removeProgs(program):
     for prog in button_ops.audio_progs:
-        if prog[0] == program:
+        if prog['name'] == program:
             button_ops.audio_progs.remove(prog)
             break

@@ -1,10 +1,10 @@
 import utils
 
 devices = [
-    ["in", "microphone", "", True],
-    ["out", "speakers", "", False],
-    ["in", "test input", "", False],
-    ["out", "headphones", "", True],
+        {"type": "in", "name": "microphone", "img": "", "default": True},
+        {"type": "out", "name": "speakers", "img": "", "default": False},
+        {"type": "in", "name": "test input", "img": "", "default": False},
+        {"type": "out", "name": "headphones", "img": "", "default": True},
 ]
 
 # programs = [
@@ -45,19 +45,19 @@ devices = [
 
 # Len = 12
 programs1 = [
-    ["Spotify", ""],
-    ["Firefox", ""],
-    ["Discord", ""],
-    ["Civ6", ""],
-    ["Risk of Rain 2", ""],
-    ["TitanFall 2", ""]]
+        {"name":"spotify", "img":""},
+        {"name":"Firefox", "img":""},
+        {"name":"Discord", "img":""},
+        {"name":"Civ6", "img":""},
+        {"name":"Risk of Rain 2", "img":""},
+        {"name":"TitanFall 2", "img":""}]
 programs2=[
-    ["Prog1", ""],
-    ["Prog2", ""],
-    ["Prog3", ""],
-    ["Prog4", ""],
-    ["Prog5", ""],
-    ["Prog6", ""],
+    {"name":"Prog1", "img":""},
+    {"name":"Prog2", "img":""},
+    {"name":"Prog3", "img":""},
+    {"name":"Prog4", "img":""},
+    {"name":"Prog5", "img":""},
+    {"name":"Prog6", "img":""},
 ]
 
 
