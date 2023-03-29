@@ -21,7 +21,7 @@ def buildWidgets(names, images, cmds, start=0):
     for i in range(MAX_WIDGETS):
         
         # If there's less widgets than the max, break
-        if i == ((namesLen-start)):
+        if i == ((namesLen-(start-1))):
             break
 
         # Check if the current section of the list will overflow

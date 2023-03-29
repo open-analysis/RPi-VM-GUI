@@ -30,9 +30,8 @@ def removeDevice(device):
         currList = button_ops.defaultAudioInputDevices
     elif device['type'] == "out":
         currList = button_ops.defaultAudioOutputDevices
-    
     for dev in currList:
-        if dev[1] == device['name']:
+        if dev[0] == device['name']:
             currList.remove(dev)
             break
 
@@ -42,9 +41,10 @@ def program_setter(prog):
 # newProgs structure = [program name, program image path]
 def importProgs(newProgs):
     button_ops.audio_progs.append(program_setter(newProgs))
+    print(button_ops.audio_progs)
 
 def removeProgs(program):
     for prog in button_ops.audio_progs:
-        if prog['name'] == program:
+        if prog[0] == program['name']:
             button_ops.audio_progs.remove(prog)
             break

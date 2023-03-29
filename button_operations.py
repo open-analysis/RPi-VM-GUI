@@ -26,6 +26,7 @@ def openAudioInput():
     ops.openScreen(audio_input_opts)
 
 def openAudioProgs():
+    print(f"Opening Audio Progs screen {audio_progs}")
     ops.openScreen(audio_progs)
 
 
