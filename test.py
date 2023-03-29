@@ -91,7 +91,7 @@ def start():
     print("Importing...")
     for dev in devices:
         utils.importDevices(dev)
-    for prog in programs1:
-        utils.importProgs(prog)
-    for prog in programs2:
-        utils.importProgs(prog)
+    #for prog in programs1:
+    #    utils.importProgs(prog)
+    #for prog in programs2:
+    #    utils.importProgs(prog)

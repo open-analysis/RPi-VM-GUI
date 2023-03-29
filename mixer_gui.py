@@ -3,8 +3,6 @@ import tkinter as tk
 import button_operations as button_ops
 import operations as ops
 
-import test
-
 def start():
     window = tk.Tk()
     window.title("Mixer")
@@ -19,8 +17,6 @@ def start():
     button_ops.setFrmMain(frm_main)
     btn_return = tk.Button(master=frm_win, text="Return", height=5, width=35, command=lambda: ops.openScreen(button_ops.top))
     btn_return.pack()
-
-    test.start()
 
     ops.openScreen(button_ops.top)
     window.mainloop()
