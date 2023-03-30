@@ -26,14 +26,12 @@ def getQueue():
 @app.post("/programs")
 def add_program():
     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-    print(f"Adding {tmp_progs}")
     utils.importProgs(tmp_progs)
     return ["Success"], 200
 
 @app.delete("/programs")
 def del_program():
     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-    print(f"Deleting {tmp_progs}")
     utils.removeProgs(tmp_progs)
     return ["Success"], 200
 
@@ -41,14 +39,12 @@ def del_program():
 @app.post("/devices")
 def add_device():
     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-    print(f"Adding {tmp_devs}")
     utils.importDevices(tmp_devs)
     return ["Success"], 200
 
 @app.delete("/devices")
 def remove_device():
     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-    print(f"Deleting {tmp_devs}")
     utils.removeDevice(tmp_devs)
     return ["Success"], 200
 

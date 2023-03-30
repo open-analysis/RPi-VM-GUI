@@ -41,7 +41,6 @@ def program_setter(prog):
 # newProgs structure = [program name, program image path]
 def importProgs(newProgs):
     button_ops.audio_progs.append(program_setter(newProgs))
-    print(button_ops.audio_progs)
 
 def removeProgs(program):
     for prog in button_ops.audio_progs:
