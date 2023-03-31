@@ -21,37 +21,37 @@ def setDefaultAudioDevice(name, devType):
     server.updateQueue(f"device setDefault {name} {devType}")
 
 def toggleMuteAudioOutDevice():
-    server.updateQueue(f"device mute toggle {button_ops.default_audio_output}")
+    server.updateQueue(f"device {button_ops.default_audio_output} mute toggle")
 
 def incVolAudioOutDevice(inc):
-    server.updateQueue(f"device volume {inc} {button_ops.default_audio_output}")
+    server.updateQueue(f"device {button_ops.default_audio_output} volume {inc}")
 
 def decVolAudioOutDevice(dec):
-    server.updateQueue(f"device volume {dec} {button_ops.default_audio_output}")
+    server.updateQueue(f"device {button_ops.default_audio_output} volume {dec}")
 
 
 def toggleMuteAudioInDevice():
-    server.updateQueue(f"device mute toggle {button_ops.default_audio_input}")
+    server.updateQueue(f"device {button_ops.default_audio_input} mute toggle")
 
 def incVolAudioInDevice(inc):
-    server.updateQueue(f"device volume {inc} {button_ops.default_audio_input}")
+    server.updateQueue(f"device {button_ops.default_audio_input} volume {inc}")
 
 def decVolAudioInDevice(dec):
-    server.updateQueue(f"device volume {dec} {button_ops.default_audio_input}")
+    server.updateQueue(f"device {button_ops.default_audio_input} volume {dec}")
 
 
 def toggleMuteProgram():
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program mute toggle {prog}")
+    server.updateQueue(f"program {prog} mute toggle")
 
 def setMuteProgram(mute):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program mute {mute} {prog}")
+    server.updateQueue(f"program {prog} mute {mute}")
 
 def incVolProgram(inc):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program volume {inc} {prog}")
+    server.updateQueue(f"program {prog} volume {inc}")
 
 def decVolProgram(dec):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program volume {dec} {prog}")
+    server.updateQueue(f"program {prog} volume {dec}")
