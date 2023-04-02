@@ -43,44 +43,44 @@ def setDefaultDevice(name, devType):
 # Audio program 
 def setCurrProg(name):
     setAudioProg(name)
-    ops.openScreen(audio_prog_opts)
+    ops.openScreen(audio_prog_out_opts)
     
 ## Audio Device Control
 # Audio input
 def toggleMuteMic():
-    ops.toggleMuteAudioInDevice()
+    ops.toggleMuteAudioInDevice("in")
 
 def incBoostMic():
-    ops.incVolAudioInDevice(5)
+    ops.incVolAudioInDevice(5, "in")
 
 def decBoostMic():
-    ops.decVolAudioInDevice(5)
+    ops.decVolAudioInDevice(5, "in")
 
 # Audio output
 def toggleMuteAudioOut():
-    ops.toggleMuteAudioOutDevice()
+    ops.toggleMuteAudioOutDevice("out")
 
 def incVolAudioOut():
-    ops.incVolAudioOutDevice(5)
+    ops.incVolAudioOutDevice(5, "out")
 
 def decVolAudioOut():
-    ops.decVolAudioOutDevice(5)
+    ops.decVolAudioOutDevice(5, "out")
 
 ## Audio Program Control
-def toggleMuteAudioProgram():
-    ops.toggleMuteProgram()
+def toggleMuteAudioOutProgram():
+    ops.toggleMuteProgram("out")
 
-def setMuteAudioProgram():
-    ops.setMuteProgram(True)
+def setMuteAudioOutProgram():
+    ops.setMuteProgram(True, "out")
 
-def setUnmuteAudioProgram():
-    ops.setMuteProgram(False)
+def setUnmuteAudioOutProgram():
+    ops.setMuteProgram(False, "out")
 
-def incVolAudioProgram():
-    ops.incVolProgram(5)
+def incVolAudioOutProgram():
+    ops.incVolProgram(5, "out")
 
-def decVolAudioProgram():
-    ops.decVolProgram(5) 
+def decVolAudioOutProgram():
+    ops.decVolProgram(5, "out")
 
 
 frm_main = None
@@ -156,9 +156,9 @@ audio_input_opts = [["Mute", "", toggleMuteMic],
                     ["Dec Boost", "", decBoostMic],
                     ["", "", None]]
 
-audio_prog_opts = [["Toggle Mute", "", toggleMuteAudioProgram],
-                   ["Mute", "", setMuteAudioProgram],
-                   ["Inc Vol", "", incVolAudioProgram],
+audio_prog_out_opts = [["Toggle Mute", "", toggleMuteAudioOutProgram],
+                   ["Mute", "", setMuteAudioOutProgram],
+                   ["Inc Vol", "", incVolAudioOutProgram],
                    ["", "", None],
-                   ["Unmute", "", setUnmuteAudioProgram],
-                   ["Dec Vol", "", decVolAudioProgram]]
+                   ["Unmute", "", setUnmuteAudioOutProgram],
+                   ["Dec Vol", "", decVolAudioOutProgram]]

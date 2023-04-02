@@ -18,40 +18,40 @@ def openScreenExt(names, images, cmds, start):
     button_ops.setFrmMain(frm_main)
 
 def setDefaultAudioDevice(name, devType):
-    server.updateQueue(f"device {name} setDefault {devType}")
+    server.updateQueue(f"device {name} {devType} setDefault")
 
-def toggleMuteAudioOutDevice():
-    server.updateQueue(f"device {button_ops.default_audio_output} mute toggle")
+def toggleMuteAudioOutDevice(dir):
+    server.updateQueue(f"device {button_ops.default_audio_output} {dir} mute toggle")
 
-def incVolAudioOutDevice(inc):
-    server.updateQueue(f"device {button_ops.default_audio_output} volume {inc}")
+def incVolAudioOutDevice(inc, dir):
+    server.updateQueue(f"device {button_ops.default_audio_output} {dir} volume {inc}")
 
-def decVolAudioOutDevice(dec):
-    server.updateQueue(f"device {button_ops.default_audio_output} volume {dec}")
-
-
-def toggleMuteAudioInDevice():
-    server.updateQueue(f"device {button_ops.default_audio_input} mute toggle")
-
-def incVolAudioInDevice(inc):
-    server.updateQueue(f"device {button_ops.default_audio_input} volume {inc}")
-
-def decVolAudioInDevice(dec):
-    server.updateQueue(f"device {button_ops.default_audio_input} volume {dec}")
+def decVolAudioOutDevice(dec, dir):
+    server.updateQueue(f"device {button_ops.default_audio_output} {dir} volume {dec}")
 
 
-def toggleMuteProgram():
+def toggleMuteAudioInDevice(dir):
+    server.updateQueue(f"device {button_ops.default_audio_input} {dir} mute toggle")
+
+def incVolAudioInDevice(inc, dir):
+    server.updateQueue(f"device {button_ops.default_audio_input} {dir} volume {inc}")
+
+def decVolAudioInDevice(dec, dir):
+    server.updateQueue(f"device {button_ops.default_audio_input} {dir} volume {dec}")
+
+
+def toggleMuteProgram(dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} mute toggle")
+    server.updateQueue(f"program {prog} {dir} mute toggle")
 
-def setMuteProgram(mute):
+def setMuteProgram(mute, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} mute {mute}")
+    server.updateQueue(f"program {prog} {dir} mute {mute}")
 
-def incVolProgram(inc):
+def incVolProgram(inc, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} volume {inc}")
+    server.updateQueue(f"program {prog} {dir} volume {inc}")
 
-def decVolProgram(dec):
+def decVolProgram(dec, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} volume {dec}")
+    server.updateQueue(f"program {prog} {dir} volume {dec}")
