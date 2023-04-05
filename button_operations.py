@@ -61,10 +61,10 @@ def toggleMuteAudioOut():
     ops.toggleMuteAudioOutDevice("out")
 
 def incVolAudioOut():
-    ops.incVolAudioOutDevice(5, "out")
+    ops.xVolAudioOutDevice("5", "out")
 
 def decVolAudioOut():
-    ops.decVolAudioOutDevice(5, "out")
+    ops.xVolAudioOutDevice("-5", "out")
 
 ## Audio Program Control
 def toggleMuteAudioOutProgram():
@@ -77,10 +77,10 @@ def setUnmuteAudioOutProgram():
     ops.setMuteProgram(False, "out")
 
 def incVolAudioOutProgram():
-    ops.incVolProgram(5, "out")
+    ops.xVolProgram("5", "out")
 
 def decVolAudioOutProgram():
-    ops.decVolProgram(5, "out")
+    ops.xVolProgram("-5", "out")
 
 
 frm_main = None
