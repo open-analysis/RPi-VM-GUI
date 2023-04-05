@@ -18,29 +18,29 @@ def openScreenExt(names, images, cmds, start):
     button_ops.setFrmMain(frm_main)
 
 def setDefaultAudioDevice(name, devType):
-    server.updateQueue(f"device {name} {devType} setDefault")
+    server.updateQueue(f"device${name}${devType}$setDefault")
 
 def toggleMuteAudioOutDevice(dir):
-    server.updateQueue(f"device {button_ops.default_audio_output} {dir} mute toggle")
+    server.updateQueue(f"device${button_ops.default_audio_output}${dir}$mute$toggle")
 
 def xVolAudioOutDevice(change, dir):
-    server.updateQueue(f"device {button_ops.default_audio_output} {dir} volume {change}")
+    server.updateQueue(f"device${button_ops.default_audio_output}${dir}$volume${change}")
 
 def toggleMuteAudioInDevice(dir):
-    server.updateQueue(f"device {button_ops.default_audio_input} {dir} mute toggle")
+    server.updateQueue(f"device${button_ops.default_audio_input}${dir}$mute$toggle")
 
 def xVolAudioInDevice(change, dir):
-    server.updateQueue(f"device {button_ops.default_audio_input} {dir} volume {change}")
+    server.updateQueue(f"device${button_ops.default_audio_input}${dir}$volume${change}")
 
 def toggleMuteProgram(dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} {dir} mute toggle")
+    server.updateQueue(f"program${prog}${dir}$mute$toggle")
 
 def setMuteProgram(mute, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} {dir} mute {mute}")
+    server.updateQueue(f"program${prog}${dir}$mute${mute}")
 
 def xVolProgram(change, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} {dir} volume {change}")
+    server.updateQueue(f"program${prog}${dir}$volume${change}")
     
