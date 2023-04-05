@@ -51,10 +51,10 @@ def toggleMuteMic():
     ops.toggleMuteAudioInDevice("in")
 
 def incBoostMic():
-    ops.incVolAudioInDevice(5, "in")
+    ops.xVolAudioInDevice("5", "in")
 
 def decBoostMic():
-    ops.decVolAudioInDevice(5, "in")
+    ops.xVolAudioInDevice("-5", "in")
 
 # Audio output
 def toggleMuteAudioOut():

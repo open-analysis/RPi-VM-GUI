@@ -40,10 +40,7 @@ def setMuteProgram(mute, dir):
     prog = button_ops.getAudioProg()
     server.updateQueue(f"program {prog} {dir} mute {mute}")
 
-def incVolProgram(inc, dir):
+def xVolProgram(change, dir):
     prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} {dir} volume {inc}")
-
-def decVolProgram(dec, dir):
-    prog = button_ops.getAudioProg()
-    server.updateQueue(f"program {prog} {dir} volume {dec}")
+    server.updateQueue(f"program {prog} {dir} volume {change}")
+    
