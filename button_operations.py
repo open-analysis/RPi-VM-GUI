@@ -50,6 +50,12 @@ def setCurrProg(name):
 def toggleMuteMic():
     ops.toggleMuteAudioInDevice("in")
 
+def setMuteAudioInDevice():
+    ops.setMuteDevice(True, "in")
+
+def setUnmuteAudioInDevice():
+    ops.setMuteDevice(False, "in")
+
 def incBoostMic():
     ops.xVolAudioInDevice("5", "in")
 
@@ -59,6 +65,12 @@ def decBoostMic():
 # Audio output
 def toggleMuteAudioOut():
     ops.toggleMuteAudioOutDevice("out")
+
+def setMuteAudioOutDevice():
+    ops.setMuteDevice(True, "out")
+
+def setUnmuteAudioOutDevice():
+    ops.setMuteDevice(False, "out")
 
 def incVolAudioOut():
     ops.xVolAudioOutDevice("5", "out")
@@ -142,19 +154,19 @@ audio_in =  [["Set input", "", openDefaultInputScreen],
              ["", "", None],
              ["", "", None]]
 
-audio_output_opts = [["Mute", "", toggleMuteAudioOut],
+audio_output_opts = [["Toggle Mute", "", toggleMuteAudioOut],
+                     ["Mute", "", setMuteAudioOutDevice],
                      ["Inc Vol", "", incVolAudioOut],
                      ["", "", None],
-                     ["", "", None],
-                     ["Dec Vol", "", decVolAudioOut],
-                     ["", "", None]]
+                     ["Unmute", "", setUnmuteAudioOutDevice],
+                     ["Dec Vol", "", decVolAudioOut]]
 
 audio_input_opts = [["Mute", "", toggleMuteMic],
+                    ["", "", setMuteAudioInDevice],
                     ["Inc Boost", "", incBoostMic],
                     ["", "", None],
-                    ["", "", None],
-                    ["Dec Boost", "", decBoostMic],
-                    ["", "", None]]
+                    ["Unmute", "", setUnmuteAudioInDevice],
+                    ["Dec Boost", "", decBoostMic]]
 
 audio_prog_out_opts = [["Toggle Mute", "", toggleMuteAudioOutProgram],
                    ["Mute", "", setMuteAudioOutProgram],

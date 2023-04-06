@@ -23,6 +23,9 @@ def setDefaultAudioDevice(name, devType):
 def toggleMuteAudioOutDevice(dir):
     server.updateQueue(f"device${button_ops.default_audio_output}${dir}$mute$toggle")
 
+def setMuteDevice(mute, dir):
+    server.updateQueue(f"device${button_ops.default_audio_output}${dir}$mute${mute}")
+
 def xVolAudioOutDevice(change, dir):
     server.updateQueue(f"device${button_ops.default_audio_output}${dir}$volume${change}")
 
