@@ -20,6 +20,20 @@ static domain_name_servers=192.168.1.1
 Git clone this repo to a directory of your choosing but make note of it  
 ` git clone https://github.com/open-analysis/RPi-VM-GUI.git `
 
+# Remove "Screen blanking"
+NOT REQUIRED
+Basically turn off the screen going dark
+```bash
+sudo raspi-config
+```
+Go to `Display Options` then `Screen Blanking`. Select `No`, save and exit `raspi-config`  
+`sudo reboot`
+
+You can also try, but I'm unsure if this will work
+```bash
+sudo xset -dpms
+```
+
 # Set GUI & server to start automatically
 
 ## Autostart 
