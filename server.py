@@ -1,12 +1,12 @@
 import threading
 import json
 from flask import Flask, request, jsonify
-import mixer_gui
+import mixer
 import utils
 
 app = Flask(__name__)
 
-t1 = threading.Thread(target=mixer_gui.start)
+t1 = threading.Thread(target=mixer.start)
 
 t1.start()
 

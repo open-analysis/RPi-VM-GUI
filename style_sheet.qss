@@ -1,0 +1,8 @@
+QPushButton:checked {
+  background-color: #c90000;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #2b0000;
+  outline: 0px;
+}

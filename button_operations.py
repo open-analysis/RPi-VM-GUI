@@ -1,176 +1,134 @@
-import operations as ops
+# import operations as ops
 
-## Open Screens
-def openAudioOutputOptions():
-    ops.openScreen(audio_out)
+# ## Open Screens
+# def openAudioOutputOptions():
+#     ops.openScreen(audio_out)
 
-def openAudioInputOptions():
-    ops.openScreen(audio_in)
+# def openAudioInputOptions():
+#     ops.openScreen(audio_in)
 
-def openDefaultOutputScreen():
-    ops.openScreen(defaultAudioOutputDevices)
+# def openDefaultOutputScreen():
+#     ops.openScreen(defaultAudioOutputDevices)
 
-def openDefaultInputScreen():
-    ops.openScreen(defaultAudioInputDevices)
+# def openDefaultInputScreen():
+#     ops.openScreen(defaultAudioInputDevices)
 
-def openDefaultAudioOutputDevices():
-    ops.openScreen(getDefaultAudioOutputDevice())
+# def openDefaultAudioOutputDevices():
+#     ops.openScreen(getDefaultAudioOutputDevice())
 
-def openAudioOutput():
-    ops.openScreen(audio_output_opts)
+# def openAudioOutput():
+#     ops.openScreen(audio_output_opts)
 
-def openDefaultAudioInputDevices():
-    ops.openScreen(getDefaultAudioInputDevice())
+# def openDefaultAudioInputDevices():
+#     ops.openScreen(getDefaultAudioInputDevice())
 
-def openAudioInput():
-    ops.openScreen(audio_input_opts)
+# def openAudioInput():
+#     ops.openScreen(audio_input_opts)
 
-def openAudioProgs():
-    ops.openScreen(audio_progs)
+# def openAudioProgs():
+#     ops.openScreen(audio_progs)
 
 
-## Setting variables
-# Setting device
-def setDefaultDevice(name, devType):
-    if devType == "out":
-        setDefaultAudioOutputDevice(name)
-        ops.openScreen(audio_output_opts)
-    elif devType == "in":
-        setDefaultAudioInputDevice(name)
-        ops.openScreen(audio_input_opts)
-    ops.setDefaultAudioDevice(name, devType)
+# ## Setting variables
+# # Setting device
+# def setDefaultDevice(name, devType):
+#     if devType == "out":
+#         setDefaultAudioOutputDevice(name)
+#         ops.openScreen(audio_output_opts)
+#     elif devType == "in":
+#         setDefaultAudioInputDevice(name)
+#         ops.openScreen(audio_input_opts)
+#     ops.setDefaultAudioDevice(name, devType)
 
-# Audio program 
-def setCurrProg(name):
-    setAudioProg(name)
-    ops.openScreen(audio_prog_out_opts)
+# # Audio program 
+# def setCurrProg(name):
+#     setAudioProg(name)
+#     ops.openScreen(audio_prog_out_opts)
     
-## Audio Device Control
-# Audio input
-def toggleMuteMic():
-    ops.toggleMuteAudioInDevice("in")
+# ## Audio Device Control
+# # Audio input
+# def toggleMuteMic():
+#     ops.toggleMuteAudioInDevice("in")
 
-def setMuteAudioInDevice():
-    ops.setMuteDevice(True, "in")
+# def setMuteAudioInDevice():
+#     ops.setMuteDevice(True, "in")
 
-def setUnmuteAudioInDevice():
-    ops.setMuteDevice(False, "in")
+# def setUnmuteAudioInDevice():
+#     ops.setMuteDevice(False, "in")
 
-def incBoostMic():
-    ops.xVolAudioInDevice("5", "in")
+# def incBoostMic():
+#     ops.xVolAudioInDevice("5", "in")
 
-def decBoostMic():
-    ops.xVolAudioInDevice("-5", "in")
+# def decBoostMic():
+#     ops.xVolAudioInDevice("-5", "in")
 
-# Audio output
-def toggleMuteAudioOut():
-    ops.toggleMuteAudioOutDevice("out")
+# # Audio output
+# def toggleMuteAudioOut():
+#     ops.toggleMuteAudioOutDevice("out")
 
-def setMuteAudioOutDevice():
-    ops.setMuteDevice(True, "out")
+# def setMuteAudioOutDevice():
+#     ops.setMuteDevice(True, "out")
 
-def setUnmuteAudioOutDevice():
-    ops.setMuteDevice(False, "out")
+# def setUnmuteAudioOutDevice():
+#     ops.setMuteDevice(False, "out")
 
-def incVolAudioOut():
-    ops.xVolAudioOutDevice("5", "out")
+# def incVolAudioOut():
+#     ops.xVolAudioOutDevice("5", "out")
 
-def decVolAudioOut():
-    ops.xVolAudioOutDevice("-5", "out")
+# def decVolAudioOut():
+#     ops.xVolAudioOutDevice("-5", "out")
 
-## Audio Program Control
-def toggleMuteAudioOutProgram():
-    ops.toggleMuteProgram("out")
+# ## Audio Program Control
+# def toggleMuteAudioOutProgram():
+#     ops.toggleMuteProgram("out")
 
-def setMuteAudioOutProgram():
-    ops.setMuteProgram(True, "out")
+# def setMuteAudioOutProgram():
+#     ops.setMuteProgram(True, "out")
 
-def setUnmuteAudioOutProgram():
-    ops.setMuteProgram(False, "out")
+# def setUnmuteAudioOutProgram():
+#     ops.setMuteProgram(False, "out")
 
-def incVolAudioOutProgram():
-    ops.xVolProgram("5", "out")
+# def incVolAudioOutProgram():
+#     ops.xVolProgram("5", "out")
 
-def decVolAudioOutProgram():
-    ops.xVolProgram("-5", "out")
+# def decVolAudioOutProgram():
+#     ops.xVolProgram("-5", "out")
 
 
-frm_main = None
-def setFrmMain(i_frm):
-    global frm_main
-    frm_main = i_frm
-def getFrmMain():
-    global frm_main
-    return frm_main
+# frm_main = None
+# def setFrmMain(i_frm):
+#     global frm_main
+#     frm_main = i_frm
+# def getFrmMain():
+#     global frm_main
+#     return frm_main
 
-default_audio_output = ""
-def setDefaultAudioOutputDevice(name):
-    global default_audio_output
-    default_audio_output = name
-def getDefaultAudioOutputDevice():
-    global default_audio_output
-    return default_audio_output
+# default_audio_output = ""
+# def setDefaultAudioOutputDevice(name):
+#     global default_audio_output
+#     default_audio_output = name
+# def getDefaultAudioOutputDevice():
+#     global default_audio_output
+#     return default_audio_output
 
-default_audio_input = ""
-def setDefaultAudioInputDevice(name):
-    global default_audio_input
-    default_audio_input = name
-def getDefaultAudioInputDevice():
-    global default_audio_input
-    return default_audio_input
+# default_audio_input = ""
+# def setDefaultAudioInputDevice(name):
+#     global default_audio_input
+#     default_audio_input = name
+# def getDefaultAudioInputDevice():
+#     global default_audio_input
+#     return default_audio_input
 
-curr_audio_prog = ""
-def setAudioProg(name):
-    global curr_audio_prog
-    curr_audio_prog = name
-def getAudioProg():
-    global curr_audio_prog
-    return curr_audio_prog
+# curr_audio_prog = ""
+# def setAudioProg(name):
+#     global curr_audio_prog
+#     curr_audio_prog = name
+# def getAudioProg():
+#     global curr_audio_prog
+#     return curr_audio_prog
 
-top = [["Audio Out", "", openAudioOutputOptions], 
-       ["Audio In", "", openAudioInputOptions],
-       ["", "", None],
-       ["", "", None],
-       ["", "", None],
-       ["", "", None]]
+def setMute(name:str, mute:bool):
+    print(f"Setting mute on {name} to {mute}")
 
-defaultAudioOutputDevices =  []
-
-defaultAudioInputDevices =  []
-
-audio_progs = []
-
-audio_out = [["Set output", "", openDefaultOutputScreen],
-             ["Audio options", "", openAudioOutput],
-             ["Audio Mixer", "", openAudioProgs],
-             ["", "", None],
-             ["", "", None],
-             ["", "", None]]
-
-audio_in =  [["Set input", "", openDefaultInputScreen],
-             ["Audio options", "", openAudioInput],
-             ["", "", None],
-             ["", "", None],
-             ["", "", None],
-             ["", "", None]]
-
-audio_output_opts = [["Toggle Mute", "", toggleMuteAudioOut],
-                     ["Mute", "", setMuteAudioOutDevice],
-                     ["Inc Vol", "", incVolAudioOut],
-                     ["", "", None],
-                     ["Unmute", "", setUnmuteAudioOutDevice],
-                     ["Dec Vol", "", decVolAudioOut]]
-
-audio_input_opts = [["Mute", "", toggleMuteMic],
-                    ["", "", setMuteAudioInDevice],
-                    ["Inc Boost", "", incBoostMic],
-                    ["", "", None],
-                    ["Unmute", "", setUnmuteAudioInDevice],
-                    ["Dec Boost", "", decBoostMic]]
-
-audio_prog_out_opts = [["Toggle Mute", "", toggleMuteAudioOutProgram],
-                   ["Mute", "", setMuteAudioOutProgram],
-                   ["Inc Vol", "", incVolAudioOutProgram],
-                   ["", "", None],
-                   ["Unmute", "", setUnmuteAudioOutProgram],
-                   ["Dec Vol", "", decVolAudioOutProgram]]
+def getMute(name:str, mute:bool):
+    print(f"Setting mute on {name} to {mute}")
