@@ -15,7 +15,7 @@ static routers=192.168.1.1
 static domain_name_servers=192.168.1.1
 ```
 
-`python3 -m pip install flask`
+`python3 -m pip install flask PyQt6`
 
 Git clone this repo to a directory of your choosing but make note of it  
 ` git clone https://github.com/open-analysis/RPi-VM-GUI.git `
