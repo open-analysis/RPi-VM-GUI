@@ -8,6 +8,6 @@ opts_audio_out = ["Set output",
                   "Audio options",
                   "Audio Mixer"]
 
-opts_audio_output_devices = ["Headphones", "Speaker"]
+opts_audio_devices = []
 
-opts_audio_output_progs = ["Discord", "Firefox"]
+opts_audio_progs = []

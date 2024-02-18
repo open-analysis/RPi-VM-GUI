@@ -26,27 +26,27 @@ def getQueue():
 @app.post("/programs")
 def add_program():
     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-    utils.importProgs(tmp_progs)
+    utils.updateProgs(tmp_progs)
     return ["Success"], 200
 
-@app.delete("/programs")
-def del_program():
-    tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-    utils.removeProgs(tmp_progs)
-    return ["Success"], 200
+# @app.delete("/programs")
+# def del_program():
+#     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
+#     utils.removeProgs(tmp_progs)
+#     return ["Success"], 200
 
 # Add/Update/Delete devices
 @app.post("/devices")
 def add_device():
     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-    utils.importDevices(tmp_devs)
+    utils.updateDevices(tmp_devs)
     return ["Success"], 200
 
-@app.delete("/devices")
-def remove_device():
-    tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-    utils.removeDevice(tmp_devs)
-    return ["Success"], 200
+# @app.delete("/devices")
+# def remove_device():
+#     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
+#     utils.removeDevice(tmp_devs)
+#     return ["Success"], 200
 
 def updateQueue(action: str):
     with open("queue.txt", "a") as f:

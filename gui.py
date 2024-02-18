@@ -273,13 +273,31 @@ def buildMenu(menu_items:list, name:str):
     col = 0
 
     for item in menu_items:
-        if type(item) is str:
-            menu_item = VMMenuItem(item)
-            menu_item.setButtonText(item)
-        elif type(item) is list:
-            menu_item = VMMenuItem(item[0])
-            menu_item.setButtonText(item[0])
-            menu_item.setNextWidget(item[1])
+        menu_item = VMMenuItem(item)
+        menu_item.setButtonText(item)
+
+        menu.addMenuItemWidget(menu_item, row, col)
+        
+        col += 1
+        if col > max_col:
+            col = 0
+            row += 1
+
+    return menu
+
+def buildAudioMenu(menu_items:list, name:str):
+    max_col = 3
+
+    if len(menu_items) > 20:
+        max_col = floor(sqrt(len(menu_items)))
+
+    menu = VMMenu(name)
+    row = 0
+    col = 0
+
+    for item in menu_items:
+        menu_item = VMMenuItem(item.m_name)
+        menu_item.setButtonText(item.m_name)
 
         menu.addMenuItemWidget(menu_item, row, col)
         
