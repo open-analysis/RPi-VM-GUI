@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from PyQt6.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication
 from gui import MainWindow, VMRibbonWidget, VMWidgetHolder, VMAudioSettingsMenu, buildMenu, buildAudioMenu
 # from button_operations import home_menu_options, test_audio_out_options
 from menu_options import *

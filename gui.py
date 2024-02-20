@@ -1,6 +1,6 @@
 from math import floor, sqrt
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout, QSlider
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout, QSlider
 
 class MainWindow(QWidget):
     m_layout = QVBoxLayout()

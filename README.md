@@ -17,21 +17,13 @@ static domain_name_servers=192.168.1.1
 ```
 
 ## Python modules install
-Edit `~/.bashrc` to include:
-```
-export PATH=$PATH:/usr/bin/qmake
-```
-
 Update the Pi and install the necessary modules for the scripts
-(Still testing this [SO question/answer](https://stackoverflow.com/questions/75509805/installing-pyqt6-on-raspberry-pi))
 ```
 sudo apt update
 sudo apt upgrade -y
 sudo apt full-upgrade -y
 sudo apt auto-remove -y
-# Unsure if this v is necessary
-apt install ninja-build libfontconfig1-dev libdbus-1-dev libfreetype6-dev libicu-dev libinput-dev libxkbcommon-dev libsqlite3-dev libssl-dev libpng-dev libjpeg-dev libglib2.0-dev libgles2-mesa-dev libgbm-dev libdrm-dev libx11-dev libxcb1-dev libxext-dev libxi-dev libxcomposite-dev libxcursor-dev libxtst-dev libxrandr-dev libx11-xcb-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-util0-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-xinput-dev
-python3 -m pip install flask PyQt6
+python3 -m pip install flask PyQt5
 sudo reboot
 ```
 
