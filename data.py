@@ -22,7 +22,6 @@ class Audio():
 
     def setMute(self, mute:bool):
         self.m_mute = mute
-        print(f"Mute: {self.m_mute}")
 
     def getName(self) -> str:
         return self.m_name
