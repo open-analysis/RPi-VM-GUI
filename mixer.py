@@ -1,8 +1,9 @@
+#! /usr/bin/env python3
+
 import sys
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication
 from gui import MainWindow, VMRibbonWidget, VMWidgetHolder, VMAudioSettingsMenu, buildMenu, buildAudioMenu
-# from button_operations import home_menu_options, test_audio_out_options
 from menu_options import *
 from data import *
 
@@ -27,13 +28,13 @@ def start():
 
     menu_audio_out.setMenuItemWidget("Audio options", VMAudioSettingsMenu(AudioDevice("Device"), "Device"))
 
-    opts_audio_output_progs_with_settings = []
     audio_programs = []
     for opt in opts_audio_progs:
-        tmp = AudioProgram(name=opt)
-        audio_programs.append(tmp)
-        opts_audio_output_progs_with_settings.append([opt, VMAudioSettingsMenu(tmp, opt)])
-    menu_audio_out_program_options = buildAudioMenu(opts_audio_output_progs_with_settings, "Output Programs")
+        tmp = AudioProgram(name=opt['name'], img=opt['img'], volume=opt['volume'], mute=opt['mute'])
+        audio_programs.append(VMAudioSettingsMenu(tmp, opt['name']))
+
+    menu_audio_out_program_options = buildAudioMenu(audio_programs, "Output Programs")
+    
     menu_audio_out.setMenuItemWidget("Audio Mixer", menu_audio_out_program_options)
 
     sys.exit(app.exec())
