@@ -28,7 +28,8 @@ def getQueue():
 @app.post("/programs")
 def add_program():
     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-    utils.updateProgs(tmp_progs)
+    for prog in tmp_progs:
+        utils.updateProgs(prog)
     return ["Success"], 200
 
 # @app.delete("/programs")
@@ -41,7 +42,8 @@ def add_program():
 @app.post("/devices")
 def add_device():
     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-    utils.updateDevices(tmp_devs)
+    for dev in tmp_devs:
+        utils.updateDevices(dev)
     return ["Success"], 200
 
 # @app.delete("/devices")
