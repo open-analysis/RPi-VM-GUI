@@ -10,6 +10,8 @@ class MainWindow(QWidget):
 
         self.setWindowTitle(title)
 
+        self.setGeometry(0,0, 700, 440)
+
         self.setLayout(self.m_layout)
 
         # show the window
@@ -203,9 +205,11 @@ class VMAudioSettingsMenu(VMMenu):
                                     "Mute"]
 
     def __init__(self, audio_program, name, *args, **kwargs):
-        super().__init__(f"Audio Settings | {name}", *args, **kwargs)
+        super().__init__(name, *args, **kwargs)
 
         self.m_audio_program = audio_program
+
+        print(f"Audio Settings menu for {name}")
         
         # Set Volume slider option
         menu_item = VMMenuItem(self.m_opts_audio_output_settings[0])
@@ -217,6 +221,7 @@ class VMAudioSettingsMenu(VMMenu):
         menu_item = VMMenuItem(self.m_opts_audio_output_settings[1])
         menu_item.setButtonText(self.m_opts_audio_output_settings[1])
         menu_item.m_button.setCheckable(True)
+        menu_item.m_button.setChecked(self.m_audio_program.getMute())
         menu_item.m_button.clicked.connect(self.m_audio_program.setMute)
         self.addMenuItemWidget(menu_item, 0, 1)
 
@@ -265,6 +270,8 @@ class VMVolumeSlider(VMWidget):
 def buildMenu(menu_items:list, name:str):
     max_col = 3
 
+    print(f"\tBuilding menu {name}")
+
     if len(menu_items) > 20:
         max_col = floor(sqrt(len(menu_items)))
 
@@ -287,8 +294,9 @@ def buildMenu(menu_items:list, name:str):
 
 def buildAudioMenu(menu_items:list, name:str):
     max_col = 3
+    print(f"\tBuild Audio Menu {name}")
 
-    if len(menu_items) > 20:
+    if len(menu_items) > 10:
         max_col = floor(sqrt(len(menu_items)))
 
     menu = VMMenu(name)
@@ -296,8 +304,9 @@ def buildAudioMenu(menu_items:list, name:str):
     col = 0
 
     for item in menu_items:
-        menu_item = VMMenuItem(item.m_name)
+        menu_item = VMMenuItem(item.m_name) 
         menu_item.setButtonText(item.m_name)
+        menu_item.setNextWidget(item)
 
         menu.addMenuItemWidget(menu_item, row, col)
         
