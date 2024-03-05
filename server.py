@@ -8,9 +8,10 @@ import utils
 
 app = Flask(__name__)
 
-t1 = threading.Thread(target=mixer.start)
 
-t1.start()
+
+def runServer():
+    app.run(debug=True, user_reloader=False, port=5000, host="192.168.1.142")
 
 # Return the queue of commands to the PC
 @app.get("/queue")
@@ -56,3 +57,11 @@ def updateQueue(action: str):
     with open("queue.txt", "a") as f:
         f.writelines(action)
         f.write('\n')
+
+
+if __name__ == '__main__':
+    t1 = threading.Thread(target=runServer)
+
+    t1.start()
+
+    mixer.start()
