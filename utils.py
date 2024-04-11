@@ -29,7 +29,7 @@ def getAttributes(listName):
     return [names, images, cmds]
 
 # newDev structure = [device type, device name, device image path, default audio status, device volume, device mute status]
-def updateDevices(newDevs):
+def updateDevices(newDevs: dict):
     updated_devices = []
     devices_to_remove = []
     
@@ -39,7 +39,7 @@ def updateDevices(newDevs):
         # If it's already in the list, update the current item
         if newDevs['name'] == opt_dev.m_name:
             opt_dev.setImg(newDevs['img'])
-            opt_dev.setVolume(newDevs['vol'])
+            opt_dev.setVolume(newDevs['volume'])
             opt_dev.setMute(newDevs['mute'])
             opt_dev.setDefault(newDevs['default'])
             opt_dev.setOutput(newDevs['type'])
@@ -48,11 +48,11 @@ def updateDevices(newDevs):
             break
     # Device not found in the list, create a new object & add it
     if not dev_set:
-        aDev = AudioDevice(newDevs['name'], newDevs['img'], newDevs['vol'], newDevs['mute'])
+        aDev = AudioDevice(newDevs['name'], newDevs['img'], newDevs['volume'], newDevs['mute'])
         # Check if it's input/output audio device
         if newDevs['type'] == "in":
             aDev.setOutput(False)
-        aDev.setDefault(dev['type'])
+        aDev.setDefault(newDevs['type'])
         opts_audio_devices.append(aDev)
         updated_devices.append(aDev)
         
@@ -82,7 +82,7 @@ def updateProgs(newProg):
         # If it's already in the list, update the current item
         if newProg['name'] == opt_prog.m_name:
             opt_prog.setImg(newProg['img'])
-            opt_prog.setVolume(newProg['vol'])
+            opt_prog.setVolume(newProg['volume'])
             opt_prog.setMute(newProg['mute'])
             updated_programs.append(opt_prog)
             prog_set = True
