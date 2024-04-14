@@ -1,6 +1,8 @@
 from math import floor, sqrt
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout, QSlider
+from menu_options import opts_audio_devices, opts_audio_progs
+from data import AudioProgram
 
 class MainWindow(QWidget):
     m_layout = QVBoxLayout()
@@ -134,12 +136,6 @@ class VMButtonWidget(VMWidget):
         super().__init__(name, *args, **kwargs)
 
 class VMMenu(VMWidget):
-    """
-        I tried to have a duplicate name check to keep data from being redundant or hide to find.
-        For some reason instances of this object are sharing a 
-        'static' variable of m_menu_items. Should be weary of this going forward.
-        Doesn't appear to affect what items are displayed though.
-    """
     m_menu_items = []
 
     def __init__(self, name="", *args, **kwargs):
@@ -156,7 +152,7 @@ class VMMenu(VMWidget):
 
     def getMenuItem(self, name:str) -> VMWidget:
         for item in self.m_menu_items:
-            if name == item.getButtonText():
+            if name == item.m_name:
                 return item
 
         return None
@@ -196,6 +192,37 @@ class VMMenuItem(VMButtonWidget):
         self.m_next_widget.show()
 
         parent.hide()
+
+    def overrideClicked(self, func):
+        self.m_button.clicked.connect(func)
+        
+    def overrideClickedOutput(self):        
+        parent = self.parentWidget()
+        
+        audio_devices = []
+        for opt in opts_audio_devices:
+            audio_devices.append(VMAudioSettingsMenu(opt, opt.getName()))
+        self.m_next_widget = buildAudioMenu(audio_devices, "Output Devices")
+        
+        parent.parentWidget().appendPrevWidget(parent)
+        parent.parentWidget().setCurrentWidget(self.m_next_widget)
+        self.m_next_widget.show()
+
+        parent.hide()
+
+    def overrideClickedMixer(self):
+        parent = self.parentWidget()
+
+        audio_programs = []
+        for opt in opts_audio_progs:
+            audio_programs.append(VMAudioSettingsMenu(opt, opt.getName()))
+        self.m_next_widget = buildAudioMenu(audio_programs, "Output Programs")
+
+        parent.parentWidget().appendPrevWidget(parent)
+        parent.parentWidget().setCurrentWidget(self.m_next_widget)
+        self.m_next_widget.show()
+
+        parent.hide()
     
 class VMAudioSettingsMenu(VMMenu):
     from data import Audio 
@@ -208,8 +235,6 @@ class VMAudioSettingsMenu(VMMenu):
         super().__init__(name, *args, **kwargs)
 
         self.m_audio_program = audio_program
-
-        print(f"Audio Settings menu for {name}")
         
         # Set Volume slider option
         menu_item = VMMenuItem(self.m_opts_audio_output_settings[0])
@@ -269,9 +294,7 @@ class VMVolumeSlider(VMWidget):
 
 def buildMenu(menu_items:list, name:str):
     max_col = 3
-
-    print(f"\tBuilding menu {name}")
-
+    
     if len(menu_items) > 20:
         max_col = floor(sqrt(len(menu_items)))
 
@@ -294,7 +317,6 @@ def buildMenu(menu_items:list, name:str):
 
 def buildAudioMenu(menu_items:list, name:str):
     max_col = 3
-    print(f"\tBuild Audio Menu {name}")
 
     if len(menu_items) > 10:
         max_col = floor(sqrt(len(menu_items)))

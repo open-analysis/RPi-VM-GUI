@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 def runServer():
-    app.run(debug=True, user_reloader=False, port=5000, host="192.168.1.142")
+    app.run(debug=True, threaded=True, use_reloader=False, port=5000, host="192.168.1.142")
 
 # Return the queue of commands to the PC
 @app.get("/queue")
@@ -20,6 +20,7 @@ def getQueue():
     with open("queue.txt", "r") as f:
         lines = f.readlines()
         queue = [line.strip() for line in lines]
+
     # Clear the file
     open("queue.txt", 'w').close()
     json_queue = jsonify(queue)
@@ -32,24 +33,12 @@ def add_program():
     utils.updateProgs(tmp_prog)
     return ["Success"], 200
 
-# @app.delete("/programs")
-# def del_program():
-#     tmp_progs = json.loads(str(request.get_data(True))[2:-1])
-#     utils.removeProgs(tmp_progs)
-#     return ["Success"], 200
-
 # Add/Update/Delete devices
 @app.post("/devices")
 def add_device():
     tmp_dev = json.loads(str(request.get_data(True))[2:-1])
     utils.updateDevices(tmp_dev)
     return ["Success"], 200
-
-# @app.delete("/devices")
-# def remove_device():
-#     tmp_devs = json.loads(str(request.get_data(True))[2:-1])
-#     utils.removeDevice(tmp_devs)
-#     return ["Success"], 200
 
 def updateQueue(action: str):
     with open("queue.txt", "a") as f:
@@ -58,8 +47,9 @@ def updateQueue(action: str):
 
 
 if __name__ == '__main__':
+
     t1 = threading.Thread(target=runServer)
-
+    
     t1.start()
-
+    
     mixer.start()

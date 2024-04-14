@@ -30,6 +30,7 @@ def getAttributes(listName):
 
 # newDev structure = [device type, device name, device image path, default audio status, device volume, device mute status]
 def updateDevices(newDevs: dict):
+    print(newDevs)
     updated_devices = []
     devices_to_remove = []
     
