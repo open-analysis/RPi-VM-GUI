@@ -2,7 +2,6 @@ from math import floor, sqrt
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout, QSlider
 from menu_options import opts_audio_devices, opts_audio_progs
-from data import AudioProgram
 
 class MainWindow(QWidget):
     m_layout = QVBoxLayout()
@@ -12,7 +11,9 @@ class MainWindow(QWidget):
 
         self.setWindowTitle(title)
 
-        self.setGeometry(0,0, 700, 440)
+        # self.setGeometry(0,0, 700, 440)
+        self.setFixedWidth(700)
+        self.setFixedHeight(450)
 
         self.setLayout(self.m_layout)
 
@@ -201,7 +202,11 @@ class VMMenuItem(VMButtonWidget):
         
         audio_devices = []
         for opt in opts_audio_devices:
+            with open("out.txt", "a") as w:
+                w.write(f"Override output {opt.getName()}\n")    
             audio_devices.append(VMAudioSettingsMenu(opt, opt.getName()))
+        with open("out.txt", "a") as w:
+            w.write(f"\n")    
         self.m_next_widget = buildAudioMenu(audio_devices, "Output Devices")
         
         parent.parentWidget().appendPrevWidget(parent)
@@ -326,6 +331,8 @@ def buildAudioMenu(menu_items:list, name:str):
     col = 0
 
     for item in menu_items:
+        with open("out.txt", "a") as w:
+            w.write(f"Item {item.m_name}\n")    
         menu_item = VMMenuItem(item.m_name) 
         menu_item.setButtonText(item.m_name)
         menu_item.setNextWidget(item)

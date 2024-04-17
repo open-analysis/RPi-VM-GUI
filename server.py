@@ -47,6 +47,8 @@ def updateQueue(action: str):
 
 
 if __name__ == '__main__':
+    with open("out.txt", "w") as w:
+        w.write(f"Start\n")    
 
     t1 = threading.Thread(target=runServer)
     

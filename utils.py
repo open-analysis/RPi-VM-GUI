@@ -30,9 +30,9 @@ def getAttributes(listName):
 
 # newDev structure = [device type, device name, device image path, default audio status, device volume, device mute status]
 def updateDevices(newDevs: dict):
-    print(newDevs)
-    updated_devices = []
-    devices_to_remove = []
+
+    with open("out.txt", "a") as w:
+        w.write(f"Updating Device with {newDevs['name']}\n")    
     
     dev_set = False
     # Check if the device is already in the current list
@@ -44,38 +44,27 @@ def updateDevices(newDevs: dict):
             opt_dev.setMute(newDevs['mute'])
             opt_dev.setDefault(newDevs['default'])
             opt_dev.setOutput(newDevs['type'])
-            updated_devices.append(opt_dev)
             dev_set = True
+            with open("out.txt", "a") as w:
+                w.write(f"Item {newDevs['name']} already in list\n")
             break
     # Device not found in the list, create a new object & add it
     if not dev_set:
+        with open("out.txt", "a") as w:
+            w.write(f"Item {newDevs['name']} not found in list\n")    
         aDev = AudioDevice(newDevs['name'], newDevs['img'], newDevs['volume'], newDevs['mute'])
         # Check if it's input/output audio device
         if newDevs['type'] == "in":
             aDev.setOutput(False)
         aDev.setDefault(newDevs['type'])
         opts_audio_devices.append(aDev)
-        updated_devices.append(aDev)
-        
-    # Check for any devices that were removed
-    for dev in opts_audio_devices:
-        updated = False
-        for updated_dev in updated_devices:
-            if dev.m_name == updated_dev.m_name:
-                updated = True
-                break
-        
-        if not updated:
-            devices_to_remove.append(dev)
 
-    # finally remove the devices from list
-    for dev in devices_to_remove:
-        opts_audio_devices.remove(dev)
+    with open("out.txt", "a") as w:
+            w.write(f"\n")
 
 # newProg structure = [program name, program image path, program volume, program mute state]
 def updateProgs(newProg):
     updated_programs = []
-    programs_to_remove = []
         
     prog_set = False
     # Check if the program is already in the current list
@@ -93,19 +82,3 @@ def updateProgs(newProg):
         aProg = AudioProgram(newProg['name'], newProg['img'], newProg['volume'], newProg['mute'])
         opts_audio_progs.append(aProg)
         updated_programs.append(aProg)
-        
-    # Check for any programs that were removed
-    for prog in opts_audio_progs:
-        updated = False
-        for updated_prog in updated_programs:
-            if prog.m_name == updated_prog.m_name:
-                updated = True
-                break
-        
-        if not updated:
-            programs_to_remove.append(prog)
-
-    # finally remove the programs from list
-    for prog in programs_to_remove:
-        opts_audio_progs.remove(prog)
-
