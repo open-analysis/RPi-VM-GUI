@@ -1,7 +1,7 @@
 from math import floor, sqrt
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QGridLayout, QSlider
-from menu_options import opts_audio_devices, opts_audio_progs
+from menu_options import opts_audio_devices, opts_audio_programs
 
 class MainWindow(QWidget):
     m_layout = QVBoxLayout()
@@ -219,7 +219,7 @@ class VMMenuItem(VMButtonWidget):
         parent = self.parentWidget()
 
         audio_programs = []
-        for opt in opts_audio_progs:
+        for opt in opts_audio_programs:
             audio_programs.append(VMAudioSettingsMenu(opt, opt.getName()))
         self.m_next_widget = buildAudioMenu(audio_programs, "Output Programs")
 

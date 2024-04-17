@@ -30,7 +30,7 @@ def getQueue():
 @app.post("/programs")
 def add_program():
     tmp_prog = json.loads(str(request.get_data(True))[2:-1])
-    utils.updateProgs(tmp_prog)
+    utils.updateprograms(tmp_prog)
     return ["Success"], 200
 
 # Add/Update/Delete devices

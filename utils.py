@@ -1,4 +1,4 @@
-from menu_options import opts_audio_devices, opts_audio_progs
+from menu_options import opts_audio_devices, opts_audio_programs
 from data import AudioDevice, AudioProgram
 
 """
@@ -14,7 +14,7 @@ Device Format
 
 Program Format
     {
-        name: prog name
+        name: program name
         img: <>
         volume: 0-100
         mute: T/F
@@ -63,12 +63,12 @@ def updateDevices(newDevs: dict):
             w.write(f"\n")
 
 # newProg structure = [program name, program image path, program volume, program mute state]
-def updateProgs(newProg):
+def updateprograms(newProg):
     updated_programs = []
         
     prog_set = False
     # Check if the program is already in the current list
-    for opt_prog in opts_audio_progs:
+    for opt_prog in opts_audio_programs:
         # If it's already in the list, update the current item
         if newProg['name'] == opt_prog.m_name:
             opt_prog.setImg(newProg['img'])
@@ -80,5 +80,5 @@ def updateProgs(newProg):
     # Program not found in the list, create a new object & add it
     if not prog_set:
         aProg = AudioProgram(newProg['name'], newProg['img'], newProg['volume'], newProg['mute'])
-        opts_audio_progs.append(aProg)
+        opts_audio_programs.append(aProg)
         updated_programs.append(aProg)

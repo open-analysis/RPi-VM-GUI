@@ -10,4 +10,4 @@ opts_audio_out = ["Set output",
 
 opts_audio_devices = []
 
-opts_audio_progs = []
+opts_audio_programs = []

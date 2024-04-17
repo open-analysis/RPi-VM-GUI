@@ -36,7 +36,7 @@ def start():
     menu_audio_out.setMenuItemWidget("Audio options", VMAudioSettingsMenu(AudioDevice("Device"), "Device"))
 
     audio_list = []
-    for opt in opts_audio_progs:
+    for opt in opts_audio_programs:
         audio_list.append(VMAudioSettingsMenu(opt, opt.getName()))
 
     menu_audio_out_program_options = buildAudioMenu(audio_list, "Output Programs")
